@@ -1,21 +1,16 @@
-jsGrid(document.getElementById('grid-container'), {
-  // essential config vars
-  cellSize: 50, // px
-  rows: 12,
-  cols: 24,
-  grid: { // element class
-    cell: 'grid-cell',
-    fixL: 'fl', // left border is fixed border
-    fixR: 'fr',
-  },
-}, {
-  // layout rules
-});
-
+// Initialize grid, bind events.
+// @param ele: DOM element as grid container.
+// @param config: configuration vars.
+          // - cellSize (px)
+          // - rows
+          // - cols
+          // - grid { cell, fixL, fixR }
+// @param rules: additional rules on grid control.
 function jsGrid(ele, config, rules) {
 
   drawGrid();
 
+  // Display grid cells, lines, placement.
   function drawGrid() {
     var html = ele.innerHTML;
     for (var i = 0; i < config.rows; i++) {
