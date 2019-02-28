@@ -1,4 +1,23 @@
-<link rel='stylesheet' href='grid.css'>
+<style>
+.grid-cell {
+  position: absolute; margin: 0; padding: 0; z-index: -1;
+  /* default */
+  width: 50px;
+  height: 50px;
+  border: 1px dashed #efefef;
+  background-color: white;
+}
+.fl {
+}
+.fr {
+}
+button {
+  width: 300px; height: 50px; display: block; margin: 20px 0;
+  font-size: 120%; font-family: sans-serif; line-height: 50px;
+  border: 3px dotted #eee; border-radius: 5px;
+  background-color: white; color: black;
+}
+</style>
 <div id='grid-container'></div>
 <script src='grid.js'></script>
 <script>
@@ -15,4 +34,33 @@
   }, {
     // layout rules
   });
+</script>
+<button id='border-default'>Reset to default.</button>
+<button id='border-black'>Make borders black.</button>
+<button id='border-large'>Make borders large.</button>
+<button id='background-black'>Make background black.</button>
+<script>
+  document.getElementById('border-default').addEventListener('click', function() {
+    document.querySelectorAll('.grid-cell').forEach(function (c) {
+      c.style.width = '50px';
+      c.style.height = '50px';
+      c.style.border = '1px dashed #efefef';
+      c.style.backgroundColor = 'white';
+    })
+  })
+  document.getElementById('border-black').addEventListener('click', function () {
+    document.querySelectorAll('.grid-cell').forEach(function (c) {
+      c.style.borderColor = 'black';
+    })
+  })
+  document.getElementById('border-large').addEventListener('click', function () {
+    document.querySelectorAll('.grid-cell').forEach(function (c) {
+      c.style.borderWidth = '2px';
+    })
+  })
+  document.getElementById('background-black').addEventListener('click', function () {
+    document.querySelectorAll('.grid-cell').forEach(function (c) {
+      c.style.backgroundColor = 'black';
+    })
+  })
 </script>
