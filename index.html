@@ -11,6 +11,9 @@
 }
 .fr {
 }
+.grid-card {
+  position: absolute; margin: 0; padding: 0;
+}
 button {
   width: 300px; height: 50px; display: block; margin: 20px 0;
   font-size: 120%; font-family: sans-serif; line-height: 50px;
@@ -30,6 +33,9 @@ button {
       cell: 'grid-cell',
       fixL: 'fl', // left border is fixed border
       fixR: 'fr',
+    },
+    card: {
+      class: 'grid-card',
     },
   }, {
     // layout rules

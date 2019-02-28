@@ -5,17 +5,24 @@
           // - rows
           // - cols
           // - grid { cell, fixL, fixR }
+          // - card { class }
 // @param rules: additional rules on grid control.
 function jsGrid(ele, config, rules) {
 
   drawGrid();
+
+  var cards = [];
+
+  // DEBUG
+  addCard(5, 8, 3, 2);
+  addCard(3, 15, 5, 6);
 
   // Display grid cells, lines, placement.
   function drawGrid() {
     var html = ele.innerHTML;
     for (var i = 0; i < config.rows; i++) {
       for (var j = 0; j < config.cols; j++) {
-        html += "<div class='grid-cell' id='gcell-" + i + "-" + j + "'></div>";
+        html += "<div class='" + config.grid.cell + "' id='gcell-" + i + "-" + j + "'></div>";
       }
     }
     ele.innerHTML = html;
@@ -26,6 +33,19 @@ function jsGrid(ele, config, rules) {
         c.style.left = j * config.cellSize + 'px';
       }
     }
+  }
+
+  function addCard(i, j, hspan, vspan) {
+    var html = ele.innerHTML;
+    html += "<div class='" + config.card.class + "' id='gcard-" + cards.length + "'></div>";
+    ele.innerHTML = html;
+    var c = document.getElementById('gcard-' + cards.length);
+    c.style.top = config.cellSize * i + 'px';
+    c.style.left = config.cellSize * j + 'px';
+    c.style.width = hspan * config.cellSize + 'px';
+    c.style.height = vspan * config.cellSize + 'px';
+    c.style.backgroundColor = '#dfdfdf'; // DEBUG
+    cards.push(c);
   }
 
 }
