@@ -13,6 +13,17 @@ function jsGrid(ele, config, rules) {
 
   var cards = [];
 
+  ele.onmousedown = function (e) {
+    var baseRect = document.querySelector('#gcell-0-0').getBoundingClientRect();
+    var base = {
+      top: baseRect.top,
+      left: baseRect.left,
+    };
+    var i = Math.floor((e.clientY - (ele.offsetTop + base.top)) / config.cellSize);
+    var j = Math.floor((e.clientX - (ele.offsetLeft + base.left)) / config.cellSize);
+    console.log(i + ',' + j);
+  }
+
   // DEBUG
   addCard(5, 8, 3, 2);
   addCard(3, 15, 5, 6);
@@ -45,7 +56,13 @@ function jsGrid(ele, config, rules) {
     c.style.width = hspan * config.cellSize + 'px';
     c.style.height = vspan * config.cellSize + 'px';
     c.style.backgroundColor = '#dfdfdf'; // DEBUG
-    cards.push(c);
+    cards.push({
+      ele: c,
+      row: i,
+      col: j,
+      hspan: hspan,
+      vspan: vspan,
+    });
   }
 
 }
