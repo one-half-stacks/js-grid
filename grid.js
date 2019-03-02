@@ -47,10 +47,12 @@ function jsGrid(ele, config, rules) {
   }
 
   function addCard(i, j, hspan, vspan) {
-    var html = ele.innerHTML;
-    html += "<div class='" + config.card.class + "' id='gcard-" + cards.length + "'></div>";
-    ele.innerHTML = html;
-    var c = document.getElementById('gcard-' + cards.length);
+    var cid = 'gcard-' + cards.length;
+    var ccls = config.card.class;
+    var c = document.createElement('div');
+    c.setAttribute('class', ccls);
+    c.setAttribute('id', cid);
+    ele.appendChild(c);
     c.style.top = config.cellSize * i + 'px';
     c.style.left = config.cellSize * j + 'px';
     c.style.width = hspan * config.cellSize + 'px';
@@ -63,6 +65,13 @@ function jsGrid(ele, config, rules) {
       hspan: hspan,
       vspan: vspan,
     });
+    dragGrid(c, {
+      offX: 0,
+      offY: 0,
+      grainX: config.cellSize,
+      grainY: config.cellSize,
+    });
+    console.log(c.onmousedown);
   }
 
 }
