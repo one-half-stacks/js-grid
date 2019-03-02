@@ -21,7 +21,17 @@ function jsGrid(ele, config, rules) {
     };
     var i = Math.floor((e.clientY - (ele.offsetTop + base.top)) / config.cellSize);
     var j = Math.floor((e.clientX - (ele.offsetLeft + base.left)) / config.cellSize);
-    console.log(i + ',' + j);
+    console.log(cardHere(i, j));
+  }
+
+  function cardHere(i, j) {
+    for (var idx = 0; idx < cards.length; idx++) {
+      var c = cards[idx];
+      if (i >= c.row && i < c.row + c.vspan
+        && j >= c.col && j < c.col + c.hspan)
+        return c;
+    }
+    return null;
   }
 
   // DEBUG
@@ -69,6 +79,10 @@ function jsGrid(ele, config, rules) {
       offY: 0,
       grainX: config.cellSize,
       grainY: config.cellSize,
+    }, function (o) {
+      var c = cards[parseInt(o.ele.id.substring(o.ele.id.length - 1))];
+      c.row = o.newR;
+      c.col = o.newC;
     });
     return c;
   }
