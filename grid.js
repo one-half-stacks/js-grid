@@ -21,7 +21,10 @@ function jsGrid(ele, config, rules) {
     };
     var i = Math.floor((e.clientY - (ele.offsetTop + base.top)) / config.cellSize);
     var j = Math.floor((e.clientX - (ele.offsetLeft + base.left)) / config.cellSize);
-    console.log(cardHere(i, j));
+    var c = cardHere(i, j);
+    if (c == null) {
+      addCard(i, j, 1, 1).style.backgroundColor = '#eee';
+    }
   }
 
   function cardHere(i, j) {
