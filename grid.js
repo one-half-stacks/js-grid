@@ -25,8 +25,8 @@ function jsGrid(ele, config, rules) {
   }
 
   // DEBUG
-  addCard(5, 8, 3, 2);
-  addCard(3, 15, 5, 6);
+  addCard(5, 8, 3, 2).style.backgroundColor = '#ee4';
+  addCard(3, 15, 5, 6).style.backgroundColor = '#4ee';
 
   // Display grid cells, lines, placement.
   function drawGrid() {
@@ -57,7 +57,6 @@ function jsGrid(ele, config, rules) {
     c.style.left = config.cellSize * j + 'px';
     c.style.width = hspan * config.cellSize + 'px';
     c.style.height = vspan * config.cellSize + 'px';
-    c.style.backgroundColor = '#dfdfdf'; // DEBUG
     cards.push({
       ele: c,
       row: i,
@@ -71,7 +70,7 @@ function jsGrid(ele, config, rules) {
       grainX: config.cellSize,
       grainY: config.cellSize,
     });
-    console.log(c.onmousedown);
+    return c;
   }
 
 }
